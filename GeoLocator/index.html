@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Geolocation Example</title>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/684/684908.png" />
+  <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet'>
+  <style>
+    #map {
+      height: 350px;
+    }
+  </style>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDsSqlb7kj2kJXeNx-FBJSEC6SpPSy7q4o"></script>
+  <script>
+    function initMap() {
+      var mapOptions = {
+        zoom: 15,
+        mapTypeId: google.maps.MapTypeId.satellite
+      };
+      var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+      
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          var latitude = position.coords.latitude;
+          var longitude = position.coords.longitude;
+          var myLatLng = new google.maps.LatLng(latitude, longitude);
+          
+          var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: "Your Location"
+          });
+          
+          map.setCenter(myLatLng);
+        }, function() {
+          console.log("Geolocation service failed.");
+        });
+      } else {
+        console.log("Geolocation is not supported by this browser.");
+      }
+    }
+  </script>
+</head>
+<body onload="initMap()">
+  <div id="map"></div>
+</body>
+</html>
