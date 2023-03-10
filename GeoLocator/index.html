@@ -9,38 +9,46 @@
       height: 350px;
     }
   </style>
-  <script src="https://maps.googleapis.com/maps/api/js?key=ADD_YOUR_API_KEY_HERE"></script>
-  <script>
-    function initMap() {
-      var mapOptions = {
-        zoom: 15,
-        mapTypeId: google.maps.MapTypeId.satellite
-      };
-      var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-      
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-          var latitude = position.coords.latitude;
-          var longitude = position.coords.longitude;
-          var myLatLng = new google.maps.LatLng(latitude, longitude);
-          
-          var marker = new google.maps.Marker({
-            position: myLatLng,
-            map: map,
-            title: "Your Location"
-          });
-          
-          map.setCenter(myLatLng);
-        }, function() {
-          console.log("Geolocation service failed.");
-        });
-      } else {
-        console.log("Geolocation is not supported by this browser.");
-      }
-    }
-  </script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=ADD_YOUR_API_KEY_HERE"></script>
+	<script>
+		function initMap() {
+		  var mapOptions = {
+			zoom: 15,
+			mapTypeId: google.maps.MapTypeId.satellite
+		  };
+		  var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+		  
+		  if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(function(position) {
+			  var latitude = position.coords.latitude;
+			  var longitude = position.coords.longitude;
+			  var myLatLng = new google.maps.LatLng(latitude, longitude);
+			  
+			  var marker = new google.maps.Marker({
+				position: myLatLng,
+				map: map,
+				title: "Your Location"
+			  });
+			  
+			  map.setCenter(myLatLng);
+			}, function() {
+			  console.log("Geolocation service failed.");
+			});
+		  } else {
+			console.log("Geolocation is not supported by this browser.");
+		  }
+		}
+	</script>
+	<style>
+		.title {
+		  font-family: 'Abel';font-size: 22px;
+		}
+	</style>
 </head>
 <body onload="initMap()">
   <div id="map"></div>
+  <div class="title" >
+    <p align="center">Add your API Key in Line 12 of the code in order for the Google maps to work</p>
+  </div>
 </body>
 </html>
