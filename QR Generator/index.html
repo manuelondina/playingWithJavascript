@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>QR Generator</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container my-5">
+        <h1 class="text-center">QR Generator</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form id="qr-form" class="my-3">
+                    <div class="form-group">
+                        <label for="qr-location">Location:</label>
+                        <input type="text" class="form-control" id="qr-location" placeholder="Enter location" readonly>
+                    </div>
+                    <button type="button" class="btn btn-primary" id="generate-qr-btn">Generate QR Code</button>
+                </form>
+                <div id="qr-code" class="text-center"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+    <script src="qr-generator.js"></script>
+</body>
+</html>
+
